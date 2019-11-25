@@ -10,6 +10,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @EnableDiscoveryClient
 public class ZuulApplication {
 
+	// start the server, the eureka server and the core product service 
+	// then open this in browser: http://localhost:8092/product/products
 	public static void main(String[] args) {
 		SpringApplication.run(ZuulApplication.class, args);
 	}
