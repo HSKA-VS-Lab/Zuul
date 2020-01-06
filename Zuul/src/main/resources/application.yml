@@ -1,0 +1,17 @@
+# Legt die routes fest /product wird auf den service product gemapped
+#zuul:
+ # routes:
+  #  product: 
+   #   path: /product 
+    #  serviceId: core_product
+      #url: http://localhost:8091 # this works, open http://localhost:8092/product
+
+#ribbon:
+#  eureka:
+#    enabled: true
+
+#core_product:
+ # ribbon:
+
+    
+#    listOfServers: http://localhost:8092/
