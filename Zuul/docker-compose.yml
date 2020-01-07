@@ -1,0 +1,76 @@
+version: '3'
+
+services:
+  eureka:
+    build: ../../eureka/eureka
+    ports:
+      - 8090:8090
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://localhost:8090/eureka
+  zuul:
+    build: .
+    ports:
+      - 8092:8092
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+  coreuser:
+    build: ../../Core_User/Core_User
+    ports:
+      - 8083:8083
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8761/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+  corerole:
+    build: ../../Core_Role/Core_Role
+    ports:
+      - 8084:8084
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+  compuserrole:
+    build: ../../Comp_User_Role/Comp_User_Role
+    ports:
+      - 8085:8085
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+      - coreuser
+      - corerole
+  apiuser:
+    build: ../../Api_User/Api_User
+    ports:
+      - 8089:8089
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+      - compuserrole
+      - coreuser
+      - corerole
+
+
