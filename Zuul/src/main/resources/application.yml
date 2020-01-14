@@ -14,10 +14,4 @@ zuul:
     user:
       path: /user
       serviceId: api_user
-  
 
-
-# Funktioniert das Load Balancing? oder muss das konfiguriert werden
-#ribbon:
-#  eureka:
-#    enabled: true
