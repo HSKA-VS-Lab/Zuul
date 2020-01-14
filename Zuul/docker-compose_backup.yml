@@ -19,6 +19,29 @@ services:
       - eureka
     depends_on:
       - eureka
+  hystrixturbine:
+    build: ../../Hystrix_Turbine
+    ports:
+      - 9090:9090
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+      - zuul
+      - coreuser
+      - corerole
+      - corecategory
+      - coreproduct
+      - compproductcategory
+      - compuserrole
+      - apicategory
+      - apiproduct
+      - apirole
+      - apiuser
+    depends_on:
+      - eureka
+      - zuul
   coreuser:
     build: ../../Core_User/Core_User
     ports:
@@ -79,8 +102,6 @@ services:
     depends_on:
       - eureka
       - zuul
-      - coreuser
-      - corerole
   compproductcategory:
     build: ../../Comp_Product_Category/Comp_Product_Category
     ports:
@@ -93,8 +114,6 @@ services:
     depends_on:
       - eureka
       - zuul
-      - coreproduct
-      - corecategory
   apiuser:
     build: ../../Api_User/Api_User
     ports:
@@ -107,9 +126,6 @@ services:
     depends_on:
       - eureka
       - zuul
-      - compuserrole
-      - coreuser
-      - corerole
   apirole:
     build: ../../Api_Role/Api_Role
     ports:
@@ -122,9 +138,6 @@ services:
     depends_on:
       - eureka
       - zuul
-      - compuserrole
-      - coreuser
-      - corerole
   apiproduct:
     build: ../../Api_Product/Api_Product
     ports:
@@ -137,9 +150,6 @@ services:
     depends_on:
       - eureka
       - zuul
-      - compproductcategory
-      - coreproduct
-      - corecategory
   apicategory:
     build: ../../Api_Category/Api_Category
     ports:
@@ -152,6 +162,3 @@ services:
     depends_on:
       - eureka
       - zuul
-      - compproductcategory
-      - coreproduct
-      - corecategory
