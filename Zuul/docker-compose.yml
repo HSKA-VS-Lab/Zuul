@@ -28,6 +28,8 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - zuul
+      - corerole
     depends_on:
       - eureka
       - zuul
