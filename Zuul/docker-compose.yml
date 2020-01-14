@@ -1,4 +1,4 @@
-version: '3'
+version: '2.4'
 
 services:
   eureka:
@@ -6,8 +6,10 @@ services:
     ports:
       - 8090:8090
     environment:
-      - JAVA_OPTS=
+      - JVM_OPTS=
         -DEUREKA_SERVER=http://localhost:8090/eureka
+    mem_limit: 300m
+    mem_reservation: 100m
   zuul:
     build: .
     ports:
@@ -19,6 +21,8 @@ services:
       - eureka
     depends_on:
       - eureka
+    mem_limit: 300m
+    mem_reservation: 100m
   hystrixturbine:
     build: ../../Hystrix_Turbine
     ports:
@@ -42,6 +46,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   coreuser:
     build: ../../Core_User/Core_User
     ports:
@@ -54,6 +60,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   corerole:
     build: ../../Core_Role/Core_Role
     ports:
@@ -66,6 +74,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   coreproduct:
     build: ../../Core_Product/Core_Product
     ports:
@@ -78,6 +88,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   corecategory:
     build: ../../Core_Category/Core_Category
     ports:
@@ -90,6 +102,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   compuserrole:
     build: ../../Comp_User_Role/Comp_User_Role
     ports:
@@ -102,6 +116,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   compproductcategory:
     build: ../../Comp_Product_Category/Comp_Product_Category
     ports:
@@ -114,6 +130,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   apiuser:
     build: ../../Api_User/Api_User
     ports:
@@ -126,6 +144,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   apirole:
     build: ../../Api_Role/Api_Role
     ports:
@@ -138,6 +158,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   apiproduct:
     build: ../../Api_Product/Api_Product
     ports:
@@ -150,6 +172,8 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
   apicategory:
     build: ../../Api_Category/Api_Category
     ports:
@@ -162,3 +186,5 @@ services:
     depends_on:
       - eureka
       - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
