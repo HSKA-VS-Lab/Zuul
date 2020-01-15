@@ -3,15 +3,15 @@ zuul:
   ignoredServices: '*' # ignoriert alle anderen Services (Zuul könnte diese automatisch hinzufügen)
   routes:
     product: 
-      path: /product # Zugriffspfad http://localhost:8092/product
+      path: /product/** # Zugriffspfad http://localhost:8092/product
       serviceId: api_product # Name des Services der bei Eureka registriert ist
     category:
-      path: /category 
+      path: /category/**
       serviceId: api_category
     role:
-      path: /role
+      path: /role/**
       serviceId: api_role
     user:
-      path: /user
+      path: /user/**
       serviceId: api_user
 
