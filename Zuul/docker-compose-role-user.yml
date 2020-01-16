@@ -1,0 +1,125 @@
+version: '2.4'
+
+services:
+  eureka:
+    build: ../../eureka/eureka
+    ports:
+      - 8090:8090
+    environment:
+      - JVM_OPTS=
+        -DEUREKA_SERVER=http://localhost:8090/eureka
+    mem_limit: 500m
+    mem_reservation: 300m
+    #cpus: 0.2
+  zuul:
+    build: .
+    ports:
+      - 8092:8092
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+    mem_limit: 500m
+    mem_reservation: 300m
+    #cpus: 0.2
+  hystrixturbine:
+    build: ../../Hystrix_Turbine
+    ports:
+      - 9090:9090
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+      - zuul
+      - coreuser
+      - corerole
+      - compuserrole
+      - apirole
+      - apiuser
+    depends_on:
+      - eureka
+      - zuul
+    mem_limit: 500m
+    mem_reservation: 300m
+    #cpus: 0.2
+  coreuser:
+    build: ../../Core_User/Core_User
+    ports:
+      - 8083:8083
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8761/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+    mem_limit: 500m
+    mem_reservation: 300m
+    #cpus: 0.2
+  corerole:
+    build: ../../Core_Role/Core_Role
+    ports:
+      - 8084:8084
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+    mem_limit: 500m
+    mem_reservation: 300m
+    #cpus: 0.2
+
+  compuserrole:
+    build: ../../Comp_User_Role/Comp_User_Role
+    ports:
+      - 8085:8085
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+    mem_limit: 300m
+    mem_reservation: 100m
+    #cpus: 0.1
+
+  apiuser:
+    build: ../../Api_User/Api_User
+    ports:
+      - 8089:8089
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+    mem_limit: 500m
+    mem_reservation: 300m
+    #cpus: 0.1
+  apirole:
+    build: ../../Api_Role/Api_Role
+    ports:
+      - 8088:8088
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8090/eureka
+    links:
+      - eureka
+    depends_on:
+      - eureka
+      - zuul
+    mem_limit: 500m
+    mem_reservation: 300m
+    #cpus: 0.1
