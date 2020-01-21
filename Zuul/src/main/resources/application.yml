@@ -5,13 +5,17 @@ zuul:
     product: 
       path: /product/** # Zugriffspfad http://localhost:8092/product
       serviceId: api_product # Name des Services der bei Eureka registriert ist
+      stripPrefix: false
     category:
       path: /category/**
       serviceId: api_category
+      stripPrefix: false
     role:
       path: /role/**
       serviceId: api_role
+      stripPrefix: false
     user:
       path: /user/**
       serviceId: api_user
+      stripPrefix: false
 
