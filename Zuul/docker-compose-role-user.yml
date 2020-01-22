@@ -1,6 +1,14 @@
 version: '2.4'
 
 services:
+  webshop:
+    build:
+      context: ../../webshop_app
+      dockerfile: ./Dockerfile
+    ports:
+      - "8888:8080"
+    links:
+      - zuul
   eureka:
     build: ../../eureka/eureka
     ports:
