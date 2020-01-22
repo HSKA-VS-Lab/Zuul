@@ -16,8 +16,8 @@ services:
     environment:
       - JVM_OPTS=
         -DEUREKA_SERVER=http://localhost:8090/eureka
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   zuul:
     build: .
     ports:
@@ -29,8 +29,8 @@ services:
       - eureka
     depends_on:
       - eureka
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   hystrixturbine:
     build: ../../Hystrix_Turbine
     ports:
@@ -54,8 +54,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   coreuser:
     build: ../../Core_User/Core_User
     ports:
@@ -68,8 +68,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   corerole:
     build: ../../Core_Role/Core_Role
     ports:
@@ -82,8 +82,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   coreproduct:
     build: ../../Core_Product/Core_Product
     ports:
@@ -96,8 +96,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   corecategory:
     build: ../../Core_Category/Core_Category
     ports:
@@ -110,8 +110,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   compuserrole:
     build: ../../Comp_User_Role/Comp_User_Role
     ports:
@@ -124,8 +124,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   compproductcategory:
     build: ../../Comp_Product_Category/Comp_Product_Category
     ports:
@@ -138,8 +138,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   apiuser:
     build: ../../Api_User/Api_User
     ports:
@@ -152,8 +152,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   apirole:
     build: ../../Api_Role/Api_Role
     ports:
@@ -166,8 +166,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   apiproduct:
     build: ../../Api_Product/Api_Product
     ports:
@@ -180,8 +180,8 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m
   apicategory:
     build: ../../Api_Category/Api_Category
     ports:
@@ -194,5 +194,5 @@ services:
     depends_on:
       - eureka
       - zuul
-    mem_limit: 600m
-    mem_reservation: 500m
+    mem_limit: 800m
+    mem_reservation: 600m

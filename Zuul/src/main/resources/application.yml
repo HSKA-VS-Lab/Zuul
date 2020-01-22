@@ -18,4 +18,12 @@ zuul:
       path: /user/**
       serviceId: api_user
       stripPrefix: false
+    compproductcategory:
+      path: /comp_product_category/**
+      serviceId: comp_product_category
+      stripPrefix: false
+    compuserrole:
+      path: /comp_user_role/**
+      serviceId: comp_user_role
+      stripPrefix: false
 
