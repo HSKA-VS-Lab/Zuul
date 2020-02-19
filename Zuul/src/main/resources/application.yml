@@ -1,7 +1,12 @@
 # Legt die routes fest /product wird auf den service product gemapped
 zuul:
   ignoredServices: '*' # ignoriert alle anderen Services (Zuul könnte diese automatisch hinzufügen)
+  sensitiveHeaders: Cookie,Set-Cookie
   routes:
+    oauthserver:
+      path: /oauth/**
+      serviceId: oauthserver
+      stripPrefix: false
     product: 
       path: /product/** # Zugriffspfad http://localhost:8092/product
       serviceId: api_product # Name des Services der bei Eureka registriert ist
