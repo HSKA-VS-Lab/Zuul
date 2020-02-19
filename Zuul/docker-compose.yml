@@ -9,6 +9,12 @@ services:
       - "8888:8080"
     links: 
       - zuul
+  oauthserver:
+    build:
+      context: ../../OAuthServer
+      dockerfile: ./Dockerfile
+    ports:
+      - "8094:8094"
   eureka:
     build: ../../eureka/eureka
     ports:
@@ -65,6 +71,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8761/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -79,6 +86,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -93,6 +101,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -107,6 +116,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -121,6 +131,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -135,6 +146,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -149,6 +161,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -163,6 +176,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -177,6 +191,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
@@ -191,6 +206,7 @@ services:
         -DEUREKA_SERVER=http://eureka:8090/eureka
     links:
       - eureka
+      - oauthserver
     depends_on:
       - eureka
       - zuul
